@@ -1,78 +1,56 @@
-const CACHE_NAME = 'psy-app-v2';
+const CACHE_NAME = "psy-app-v1";
 
-// فقط فایل‌های واقعی + مهم
+const BASE = "/Azmoon_P/";
+
 const ASSETS = [
-  '/Azmoon_P/',
-  '/Azmoon_P/index.html',
-  '/Azmoon_P/style.css',
-  '/Azmoon_P/script.js',
-  '/Azmoon_P/manifest.json',
-  '/Azmoon_P/icons/icon-192.png',
-  '/Azmoon_P/icons/icon-512.png'
+  BASE,
+  BASE + "index.html",
+  BASE + "style.css",
+  BASE + "script.js",
+  BASE + "manifest.json",
+  BASE + "icons/icon-192.png",
+  BASE + "icons/icon-512.png"
 ];
 
-// ─────────────────────────────
-// INSTALL
-// ─────────────────────────────
-self.addEventListener('install', event => {
-  self.skipWaiting();
+// install
+self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
+    caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(ASSETS);
     })
   );
+  self.skipWaiting();
 });
 
-// ─────────────────────────────
-// ACTIVATE
-// ─────────────────────────────
-self.addEventListener('activate', event => {
+// activate
+self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then(keys =>
+    caches.keys().then((keys) =>
       Promise.all(
         keys
-          .filter(key => key !== CACHE_NAME)
-          .map(key => caches.delete(key))
+          .filter((k) => k !== CACHE_NAME)
+          .map((k) => caches.delete(k))
       )
     )
   );
   self.clients.claim();
 });
 
-// ─────────────────────────────
-// FETCH (نسخه حرفه‌ای + ضد سفید شدن)
-// ─────────────────────────────
-self.addEventListener('fetch', event => {
-  const url = new URL(event.request.url);
-
-  // فقط برای GET
-  if (event.request.method !== 'GET') return;
-
+// fetch (اصلاح‌شده و پایدار)
+self.addEventListener("fetch", (event) => {
   event.respondWith(
-    fetch(event.request)
-      .then(response => {
-        // فقط پاسخ‌های سالم را کش کن
-        if (response && response.status === 200) {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then(cache => {
-            cache.put(event.request, clone);
-          });
-        }
-        return response;
-      })
-      .catch(() => {
-        // اگر آفلاین شد
+    caches.match(event.request).then((cached) => {
+      if (cached) return cached;
 
-        return caches.match(event.request).then(cached => {
-          if (cached) return cached;
-
-          // fallback مهم (حل صفحه سفید)
-          if (event.request.destination === 'document') {
-            return caches.match('/Azmoon_P/index.html');
+      return fetch(event.request)
+        .then((res) => {
+          return res;
+        })
+        .catch(() => {
+          if (event.request.mode === "navigate") {
+            return caches.match(BASE);
           }
-
-          return null;
         });
-      })
+    })
   );
 });
