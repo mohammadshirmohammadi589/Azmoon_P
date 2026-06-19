@@ -1,6 +1,6 @@
-const CACHE_NAME = 'psy-app-v1';
+const CACHE_NAME = 'psy-app-v2';
 
-// مهم: همه مسیرها باید با /Azmoon_P/ باشند
+// فقط فایل‌های واقعی + مهم
 const ASSETS = [
   '/Azmoon_P/',
   '/Azmoon_P/index.html',
@@ -11,37 +11,48 @@ const ASSETS = [
   '/Azmoon_P/icons/icon-512.png'
 ];
 
-// نصب
+// ─────────────────────────────
+// INSTALL
+// ─────────────────────────────
 self.addEventListener('install', event => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => {
       return cache.addAll(ASSETS);
     })
   );
-  self.skipWaiting();
 });
 
-// فعال‌سازی
+// ─────────────────────────────
+// ACTIVATE
+// ─────────────────────────────
 self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then(keys => {
-      return Promise.all(
+    caches.keys().then(keys =>
+      Promise.all(
         keys
           .filter(key => key !== CACHE_NAME)
           .map(key => caches.delete(key))
-      );
-    })
+      )
+    )
   );
   self.clients.claim();
 });
 
-// fetch (مهم‌ترین بخش)
+// ─────────────────────────────
+// FETCH (نسخه حرفه‌ای + ضد سفید شدن)
+// ─────────────────────────────
 self.addEventListener('fetch', event => {
+  const url = new URL(event.request.url);
+
+  // فقط برای GET
+  if (event.request.method !== 'GET') return;
+
   event.respondWith(
     fetch(event.request)
       .then(response => {
-        // فقط درخواست‌های معتبر را کش کن
-        if (response && response.status === 200 && response.type === 'basic') {
+        // فقط پاسخ‌های سالم را کش کن
+        if (response && response.status === 200) {
           const clone = response.clone();
           caches.open(CACHE_NAME).then(cache => {
             cache.put(event.request, clone);
@@ -50,9 +61,17 @@ self.addEventListener('fetch', event => {
         return response;
       })
       .catch(() => {
+        // اگر آفلاین شد
+
         return caches.match(event.request).then(cached => {
-          // اگر آفلاین بود
-          return cached || caches.match('/Azmoon_P/index.html');
+          if (cached) return cached;
+
+          // fallback مهم (حل صفحه سفید)
+          if (event.request.destination === 'document') {
+            return caches.match('/Azmoon_P/index.html');
+          }
+
+          return null;
         });
       })
   );
