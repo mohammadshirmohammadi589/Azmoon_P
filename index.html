@@ -3,40 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
   <meta name="theme-color" content="#0e3b49">
-  <meta name="description" content="۳۰۰ سوال پرتکرار کنکور ارشد روانشناسی با دسته‌بندی موضوعی و ذخیره پیشرفت — کار می‌کند بدون اینترنت">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="کنکور روانشناسی">
+  <meta name="description" content="۳۰۰ سوال پرتکرار کنکور ارشد روانشناسی">
+
   <title>کنکور ارشد روانشناسی</title>
+
   <link rel="stylesheet" href="style.css">
   <link rel="manifest" href="manifest.json">
+
+  <link rel="icon" href="icons/icon-192.png">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 </head>
+
 <body>
 
-  <!-- Splash Screen -->
+  <!-- Splash -->
   <div id="splashScreen">
     <div class="splash-icon">🧠</div>
     <div class="splash-title">کنکور ارشد روانشناسی</div>
     <div class="splash-sub">در حال بارگذاری…</div>
   </div>
 
-  <!-- Main App -->
+  <!-- App -->
   <div class="container" id="appContainer"></div>
 
+  <!-- JS اصلی -->
   <script src="/Azmoon_P/script.js"></script>
+
+  <!-- ✅ Service Worker صحیح (فقط همین یکی!) -->
   <script>
-    // ── Service Worker ───────────────────────────────
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js').catch(() => {});
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('/Azmoon_P/sw.js')
+          .then(function (registration) {
+            console.log('SW registered:', registration.scope);
+          })
+          .catch(function (error) {
+            console.log('SW error:', error);
+          });
       });
     }
+  </script>
 
-    // ── Splash Screen حذف بعد از لود ────────────────
+  <!-- Splash remove -->
+  <script>
     window.addEventListener('load', () => {
       setTimeout(() => {
         const s = document.getElementById('splashScreen');
@@ -46,22 +57,21 @@
         }
       }, 900);
     });
+  </script>
 
-    // ── دکمه برگشت اندروید ──────────────────────────
-    // هر بار که صفحه عوض می‌شود یک تاریخچه push می‌کنیم
-    // وقتی کاربر Back فشار می‌دهد، به خانه برمی‌گردد
+  <!-- Back button -->
+  <script>
     window.addEventListener('popstate', () => {
-      const mode = (window.__currentMode || 'home');
+      const mode = window.__currentMode || 'home';
       if (mode !== 'home') {
         renderHome();
       } else {
-        // اگر در خانه‌ایم و Back زد، برنامه مینیمایز می‌شود (رفتار استاندارد)
         history.pushState({ page: 'home' }, '');
       }
     });
 
-    // Push اولیه
     history.pushState({ page: 'home' }, '');
   </script>
+
 </body>
 </html>
