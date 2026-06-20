@@ -1,8 +1,8 @@
 {
   "name": "کنکور ارشد روانشناسی",
   "short_name": "روانشناسی",
-  "start_url": "/Azmoon_P/",
-  "scope": "/Azmoon_P/",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#0b2b3b",
   "theme_color": "#0e3b49",
