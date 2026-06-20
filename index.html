@@ -36,7 +36,7 @@
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', async () => {
         try {
-          const reg = await navigator.serviceWorker.register('./sw.js');
+          const reg = await navigator.serviceWorker.register('/Azmoon_P/sw.js');
           console.log('SW OK:', reg.scope);
         } catch (err) {
           console.log('SW FAIL:', err);
@@ -44,7 +44,19 @@
       });
     }
   </script>
-
+  <script>
+   if ('serviceWorker' in navigator) {
+     window.addEventListener('load', () => {
+       navigator.serviceWorker.register('/Azmoon_P/sw.js')
+          .then(reg => {
+           console.log('SW OK:', reg.scope);
+         })
+         .catch(err => {
+           console.log('SW FAIL:', err);
+         });
+     });
+   }
+  </script>
   <!-- Splash remove -->
   <script>
     window.addEventListener('load', () => {
