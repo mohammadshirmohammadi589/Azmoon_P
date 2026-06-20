@@ -1,7 +1,5 @@
-const CACHE_NAME = 'azmoon-psy-v2';
-
-// همه مسیرها باید با /Azmoon_P/ باشند
-const BASE = '/Azmoon_P/';
+const CACHE_NAME = 'azmoon-psy-v3';
+const BASE = './';
 
 const ASSETS = [
   BASE,
@@ -13,7 +11,7 @@ const ASSETS = [
   BASE + 'icons/icon-512.png'
 ];
 
-// نصب
+// Install
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS))
@@ -21,7 +19,7 @@ self.addEventListener('install', event => {
   self.skipWaiting();
 });
 
-// فعال‌سازی
+// Activate
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
@@ -33,7 +31,7 @@ self.addEventListener('activate', event => {
   self.clients.claim();
 });
 
-// fetch امن (نسخه استاندارد PWA)
+// Fetch
 self.addEventListener('fetch', event => {
   event.respondWith(
     fetch(event.request)
@@ -42,11 +40,12 @@ self.addEventListener('fetch', event => {
 
         const copy = res.clone();
         caches.open(CACHE_NAME).then(cache => cache.put(event.request, copy));
+
         return res;
       })
       .catch(() => {
         return caches.match(event.request)
-          .then(r => r || caches.match(BASE + 'index.html'));
+          || caches.match(BASE + 'index.html');
       })
   );
 });
