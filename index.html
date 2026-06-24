@@ -1,55 +1,312 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#0e3b49">
-  <meta name="description" content="۳۰۰ سوال پرتکرار کنکور ارشد روانشناسی">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="mobile-web-app-capable" content="yes">
-  <title>کنکور ارشد روانشناسی</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="manifest" href="manifest.json">
-  <link rel="icon" href="icons/icon-192.png">
-  <link rel="apple-touch-icon" href="icons/icon-192.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#0e3b49">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title>کنکور ارشد روانشناسی</title>
+<style>
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;font-family:'Vazirmatn','Segoe UI',Tahoma,sans-serif}
+html,body{overflow-x:hidden;overscroll-behavior:none}
+body{background:linear-gradient(145deg,#0b2b3b 0%,#1a4b5e 100%);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:10px;user-select:none}
+#splash{position:fixed;inset:0;background:linear-gradient(145deg,#0b2b3b,#1a4b5e);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;gap:16px;transition:opacity 0.5s}
+#splash .si{font-size:5rem;animation:pulse 1.2s infinite}
+#splash .st{color:#1abc9c;font-size:1.3rem;font-weight:bold}
+#splash .ss{color:rgba(255,255,255,0.7);font-size:0.9rem}
+#splash.hide{opacity:0;pointer-events:none}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+.box{width:100%;max-width:520px;background:rgba(255,255,255,0.96);border-radius:32px;padding:18px 16px 24px;box-shadow:0 30px 50px rgba(0,0,0,0.35);display:flex;flex-direction:column;gap:14px;max-height:97vh;overflow-y:auto;scrollbar-width:none}
+.box::-webkit-scrollbar{display:none}
+@keyframes slideIn{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.anim{animation:slideIn 0.28s ease both}
+.hdr{text-align:center;background:#0e3b49;color:white;border-radius:20px;padding:14px 8px;font-weight:bold;font-size:1.05rem;box-shadow:0 6px 16px rgba(0,0,0,0.25)}
+.pbw{background:#d9ebf2;border-radius:30px;height:8px;overflow:hidden}
+.pbf{height:100%;background:linear-gradient(90deg,#1abc9c,#16a085);border-radius:30px;transition:width 0.45s}
+.pt{text-align:center;font-weight:bold;font-size:0.85rem;color:#0b2b3b}
+.qb{background:white;border-radius:24px;padding:16px 14px;box-shadow:0 8px 24px rgba(0,0,0,0.07);font-size:1.05rem;font-weight:600;line-height:1.9;color:#08212b;text-align:justify;border-right:6px solid #1abc9c}
+.cb{display:inline-block;background:#e8f8f4;color:#0e6e52;border-radius:20px;padding:3px 12px;font-size:0.75rem;font-weight:bold;margin-bottom:4px}
+.eb{display:inline-block;border-radius:20px;padding:2px 10px;font-size:0.7rem;font-weight:bold;margin-right:6px}
+.ep{background:#fff3cd;color:#856404}
+.en{background:#d1ecf1;color:#0c5460}
+.opts{display:flex;flex-direction:column;gap:10px}
+.ob{background:#f3f7fa;border:2px solid #dce5ec;border-radius:18px;padding:14px 12px;font-size:0.95rem;font-weight:600;font-family:'Vazirmatn',sans-serif;color:#0f3a47;text-align:right;cursor:pointer;transition:transform 0.15s,background 0.2s;word-break:break-word;line-height:1.6}
+.ob:active{transform:scale(0.96)}
+.ob.dis{pointer-events:none;opacity:0.85}
+.ob.cor{background:#d4edda;border-color:#28a745;color:#155724;animation:cpop 0.3s}
+.ob.inc{background:#f8d7da;border-color:#dc3545;color:#721c24;animation:shk 0.35s}
+@keyframes cpop{0%{transform:scale(1)}50%{transform:scale(1.03)}100%{transform:scale(1)}}
+@keyframes shk{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.fb{font-weight:bold;text-align:center;font-size:0.88rem;padding:10px 12px;border-radius:14px;background:#eef3f5;color:#0a3140;line-height:1.7;animation:slideIn 0.25s}
+.ar{display:flex;justify-content:space-between;gap:10px;margin-top:4px}
+.btn{flex:1;padding:13px 5px;border-radius:50px;border:none;font-size:0.95rem;font-weight:bold;font-family:'Vazirmatn',sans-serif;cursor:pointer;transition:transform 0.15s;background:#1abc9c;color:white;text-align:center}
+.btn:active{transform:scale(0.94)}
+.btn.dk{background:#2c3e50}
+.btn.sc{background:#6c757d}
+.btn.wn{background:#e67e22}
+.btn.in{background:#2980b9}
+.ms{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.ms .mv{background:#f0f8ff;border-radius:14px;padding:8px 14px;text-align:center;flex:1;min-width:70px}
+.ms .mv .vl{font-size:1.3rem;font-weight:bold;color:#1abc9c}
+.ms .mv .lb{font-size:0.7rem;color:#555}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cc{background:#f0f8ff;border:2px solid #c9e4f5;border-radius:20px;padding:14px 10px;text-align:center;cursor:pointer;transition:transform 0.15s}
+.cc:active{transform:scale(0.95)}
+.cc .ci{font-size:1.7rem;margin-bottom:6px}
+.cc .cn{font-size:0.82rem;font-weight:bold;color:#0e3b49;line-height:1.4}
+.cc .ck{font-size:0.72rem;color:#555;margin-top:3px}
+.cc .cp{font-size:0.7rem;color:#1abc9c;margin-top:2px;font-weight:bold}
+.cc.al{grid-column:1/-1;background:#e8f8f4;border-color:#1abc9c}
+.sb{background:#fff3cd;border:1px solid #ffc107;border-radius:12px;padding:8px 12px;font-size:0.82rem;color:#856404;text-align:center}
+.rs{text-align:center;background:white;border-radius:28px;padding:24px 15px;font-weight:bold;color:#0b2b3b}
+.rs .sc2{font-size:2.6rem;color:#1abc9c;margin:12px 0}
+.rs .sd{font-size:0.9rem;color:#555;margin-bottom:16px}
+.ab{background:white;border-radius:20px;padding:16px;font-size:0.88rem;line-height:1.8;color:#333;text-align:right}
+.db{background:#fff8e1;border:1px solid #ffe082;border-radius:14px;padding:12px 14px;font-size:0.82rem;line-height:1.7;color:#5d4037;text-align:right}
+.hid{display:none!important}
+.div{border:none;border-top:1px solid #e0e9ef;margin:2px 0}
+@media(max-width:400px){.ob{padding:13px 10px;font-size:0.88rem}.qb{font-size:0.97rem}.btn{font-size:0.88rem;padding:12px 4px}}
+</style>
 </head>
 <body>
-
-  <div id="splashScreen">
-    <div class="splash-icon">🧠</div>
-    <div class="splash-title">کنکور ارشد روانشناسی</div>
-    <div class="splash-sub">در حال بارگذاری…</div>
-  </div>
-
-  <div class="container" id="appContainer"></div>
-
-  <script src="script.js"></script>
-
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/Azmoon_P/sw.js', { scope: '/Azmoon_P/' })
-          .then(r => console.log('SW:', r.scope))
-          .catch(e => console.log('SW fail:', e));
-      });
-    }
-
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        const s = document.getElementById('splashScreen');
-        if (s) { s.classList.add('hide'); setTimeout(() => s.remove(), 500); }
-      }, 1200);
-    });
-
-    window.addEventListener('popstate', () => {
-      if ((window.__currentMode || 'home') !== 'home') {
-        if (typeof renderHome === 'function') renderHome();
-      } else {
-        history.pushState({page:'home'}, '');
-      }
-    });
-    history.pushState({page:'home'}, '');
-  </script>
-
+<div id="splash">
+  <div class="si">🧠</div>
+  <div class="st">کنکور ارشد روانشناسی</div>
+  <div class="ss">در حال بارگذاری…</div>
+</div>
+<div class="box" id="app"></div>
+<script>
+var CATS=[
+  {id:"history",name:"تاریخچه و مکاتب",icon:"📚"},
+  {id:"dev",name:"رشد و تکامل",icon:"🌱"},
+  {id:"clin",name:"روانشناسی بالینی",icon:"🧠"},
+  {id:"bio",name:"زیست‌شناختی",icon:"🔬"},
+  {id:"learn",name:"یادگیری و حافظه",icon:"💡"},
+  {id:"social",name:"اجتماعی و شخصیت",icon:"👥"},
+  {id:"stats",name:"روش تحقیق و آمار",icon:"📊"},
+  {id:"therapy",name:"روان‌درمانی",icon:"💬"}
+];
+var LT=['الف','ب','پ','ت'];
+var QS=[
+{q:"کدام مکتب روانشناسی بر مطالعه تجربه هشیار از طریق درون‌نگری تأکید داشت؟",o:["رفتارگرایی","ساخت‌گرایی","کارکردگرایی","روانکاوی"],c:1,cat:"history",era:"pre",ex:"ساخت‌گرایی وونت به تحلیل عناصر هشیاری با درون‌نگری می‌پرداخت."},
+{q:"بنیانگذار روان‌کاوی چه کسی است؟",o:["کارل یونگ","آلفرد آدلر","زیگموند فروید","اریک اریکسون"],c:2,cat:"history",era:"pre",ex:"فروید بنیانگذار مکتب روان‌کاوی است."},
+{q:"کدام فیلسوف یونانی عقیده داشت ذهن در بدو تولد لوح سفید است؟",o:["افلاطون","ارسطو","سقراط","دکارت"],c:1,cat:"history",era:"pre",ex:"ارسطو ذهن را لوح سفید می‌دانست که تجربه آن را پر می‌کند."},
+{q:"کدام یک از مکاتب روانشناسی بر «کل‌نگری» و پدیده‌های ادراکی تأکید دارد؟",o:["رفتارگرایی","گشتالت","روان‌کاوی","شناخت‌گرایی"],c:1,cat:"history",era:"pre",ex:"مکتب گشتالت به ادراک کل‌نگر تأکید دارد."},
+{q:"کارکردگرایی در روانشناسی بیشتر تحت تأثیر کدام متفکر بود؟",o:["ویلهلم وونت","ویلیام جیمز","ایوان پاولف","ادوارد تیچنر"],c:1,cat:"history",era:"post",ex:"ویلیام جیمز پدر کارکردگرایی آمریکایی به‌شمار می‌رود."},
+{q:"کدام گزاره درباره مکتب رفتارگرایی صحیح است؟",o:["بر فرآیندهای ذهنی تأکید دارد","فقط رفتار قابل مشاهده را مطالعه می‌کند","از درون‌نگری استفاده می‌کند","ناهشیار را مرکز توجه می‌داند"],c:1,cat:"history",era:"post",ex:"رفتارگرایی واتسون تنها رفتار مشاهده‌پذیر را علمی می‌داند."},
+{q:"کدام رویکرد روانشناسی بر نقش اراده آزاد، معنا و رشد انسانی تأکید دارد؟",o:["رفتارگرایی","روان‌کاوی","انسان‌گرایی","زیست‌شناختی"],c:2,cat:"history",era:"post",ex:"مکتب انسان‌گرایی (مزلو، راجرز) بر رشد و شکوفایی انسان تأکید دارد."},
+{q:"کدام دانشمند آزمایشگاه روانشناسی تجربی اول را در لایپزیگ تأسیس کرد؟",o:["فروید","وونت","جیمز","اسکینر"],c:1,cat:"history",era:"post",ex:"ویلهلم وونت در ۱۸۷۹ اولین آزمایشگاه روانشناسی را تأسیس کرد."},
+{q:"روانشناسی شناختی بیشتر در واکنش به کدام مکتب شکل گرفت؟",o:["روان‌کاوی","گشتالت","رفتارگرایی","انسان‌گرایی"],c:2,cat:"history",era:"post",ex:"انقلاب شناختی دهه ۱۹۵۰-۶۰ در واکنش به محدودیت‌های رفتارگرایی بود."},
+{q:"کدام روانشناس مفهوم «ناهشیار جمعی» را مطرح کرد؟",o:["فروید","یونگ","آدلر","هورنای"],c:1,cat:"history",era:"post",ex:"کارل گوستاو یونگ ناهشیار جمعی و کهن‌الگوها را معرفی کرد."},
+{q:"کدام گزاره درباره روانشناسی مثبت‌گرا صحیح است؟",o:["بر آسیب‌شناسی تمرکز دارد","بر توانمندی‌ها، شادکامی و شکوفایی تمرکز دارد","از رفتارگرایی جدا نیست","فقط برای بالغان کاربرد دارد"],c:1,cat:"history",era:"post",ex:"روانشناسی مثبت‌گرا (سلیگمن) بر نقاط قوت و شکوفایی انسان تأکید دارد."},
+{q:"«روانشناسی فردی» آدلر بر کدام مفهوم تأکید اصلی دارد؟",o:["غریزه جنسی","احساس حقارت و تلاش برای برتری","ناهشیار جمعی","شرطی‌سازی"],c:1,cat:"history",era:"post",ex:"آدلر: احساس حقارت انگیزه اصلی پیشرفت و تلاش برای برتری است."},
+{q:"در نظریه پیاژه، تفکر فرضیه‌ای-قیاسی مربوط به کدام مرحله است؟",o:["حسی-حرکتی","پیش‌عملیاتی","عملیات عینی","عملیات صوری"],c:3,cat:"dev",era:"pre",ex:"مرحله عملیات صوری (۱۱+ سال) تفکر انتزاعی را ممکن می‌سازد."},
+{q:"در نظریه اریکسون، بحران «اعتماد در برابر بی‌اعتمادی» در کدام دوره سنی است؟",o:["نوزادی ۰-۱ سال","نوپایی ۱-۳ سال","پیش‌دبستانی ۳-۶ سال","نوجوانی"],c:0,cat:"dev",era:"pre",ex:"مرحله اول اریکسون در سال اول زندگی است."},
+{q:"در نظریه دلبستگی بالبی، الگوی دلبستگی «اجتنابی» چگونه است؟",o:["کودک به راحتی کاوش می‌کند","کودک بسیار مضطرب است","کودک به مادر بی‌اعتناست","کودک رفتارهای متناقض نشان می‌دهد"],c:2,cat:"dev",era:"pre",ex:"دلبستگی ناایمن-اجتنابی با بی‌اعتنایی به مراقب مشخص می‌شود."},
+{q:"طبق نظریه پیاژه، «خودمرکزبینی» مشخصه کدام مرحله است؟",o:["حسی-حرکتی","پیش‌عملیاتی","عملیات عینی","عملیات صوری"],c:1,cat:"dev",era:"pre",ex:"کودک در مرحله پیش‌عملیاتی (۲-۷ سال) نمی‌تواند دیدگاه دیگران را ببیند."},
+{q:"کدام نظریه رشد اخلاقی مراحل «پیش‌قراردادی، قراردادی و پس‌قراردادی» را مطرح کرد؟",o:["پیاژه","کولبرگ","ویگوتسکی","فروید"],c:1,cat:"dev",era:"pre",ex:"لارنس کولبرگ این مراحل را معرفی کرد."},
+{q:"در نظریه ویگوتسکی، «منطقه تقریبی رشد» به چه معناست؟",o:["تفاوت بین توانایی مستقل و با کمک","مرحله‌ای که کودک نمی‌تواند یاد بگیرد","رشد جسمانی","هیچ‌کدام"],c:0,cat:"dev",era:"pre",ex:"ZPD فاصله بین عملکرد مستقل و عملکرد با راهنمایی است."},
+{q:"کدام یک از مراحل رشد روانی-جنسی فروید با «عقده ادیپ» همراه است؟",o:["دهانی","مقعدی","آلتی (فالیک)","تناسلی"],c:2,cat:"dev",era:"pre",ex:"عقده ادیپ در مرحله فالیک (۳-۶ سالگی) رخ می‌دهد."},
+{q:"در نظریه اریکسون، بحران «هویت در برابر سردرگمی نقش» در کدام دوره است؟",o:["کودکی","نوجوانی","جوانی","میانسالی"],c:1,cat:"dev",era:"post",ex:"مرحله پنجم اریکسون در نوجوانی است."},
+{q:"مفهوم «داربست‌سازی» در آموزش از کدام نظریه‌پرداز گرفته شده است؟",o:["پیاژه","بروئر","ویگوتسکی","بندورا"],c:2,cat:"dev",era:"post",ex:"داربست‌سازی (Scaffolding) از مفاهیم ویگوتسکی است."},
+{q:"کدام مفهوم به توانایی کودک برای فهمیدن اینکه دیگران دیدگاه متفاوتی دارند اشاره می‌کند؟",o:["نظریه ذهن","بازنمایی دوگانه","پایداری شیء","خودمرکزبینی"],c:0,cat:"dev",era:"post",ex:"نظریه ذهن (Theory of Mind) حدود ۴ سالگی شکل می‌گیرد."},
+{q:"کدام سبک فرزندپروری بامریند با بهترین پیامدهای تکاملی همراه است؟",o:["مقتدرانه","اقتدارگرانه","سهل‌گیرانه","بی‌توجه"],c:0,cat:"dev",era:"post",ex:"سبک مقتدرانه (Authoritative) ترکیب گرما و کنترل است."},
+{q:"در نظریه اریکسون، «بهره‌وری در برابر رکود» مربوط به کدام دوره زندگی است؟",o:["جوانی","میانسالی","سالمندی","نوجوانی"],c:1,cat:"dev",era:"post",ex:"مرحله هفتم اریکسون در میانسالی است."},
+{q:"در رشد زبانی، «انفجار واژگانی» معمولاً در چه سنی رخ می‌دهد؟",o:["۱۲-۱۴ ماهگی","۱۸-۲۴ ماهگی","۳ سالگی","۴ سالگی"],c:1,cat:"dev",era:"post",ex:"کودکان بین ۱۸ تا ۲۴ ماهگی واژگانشان به سرعت گسترش می‌یابد."},
+{q:"در DSM-5، برای تشخیص GAD علائم باید حداقل چند ماه ادامه داشته باشند؟",o:["۱ ماه","۳ ماه","۶ ماه","۱۲ ماه"],c:2,cat:"clin",era:"pre",ex:"اضطراب و نگرانی باید حداقل ۶ ماه ادامه یابد."},
+{q:"کدام یک از گزینه‌ها از علائم مثبت اسکیزوفرنی نیست؟",o:["توهم","هذیان","گفتار آشفته","فقدان انگیزه (بی‌ارادگی)"],c:3,cat:"clin",era:"pre",ex:"بی‌ارادگی جزء علائم منفی اسکیزوفرنی است."},
+{q:"کدام یک از ملاک‌های تشخیصی دوره شیدایی در دوقطبی نوع یک است؟",o:["کاهش نیاز به خواب","افزایش وزن","خستگی مفرط","کندی روانی-حرکتی"],c:0,cat:"clin",era:"pre",ex:"کاهش نیاز به خواب از علائم شیدایی است."},
+{q:"در DSM-5، اختلال PTSD در کدام دسته قرار می‌گیرد؟",o:["اختلالات اضطرابی","اختلالات مرتبط با تروما","اختلالات خلقی","اختلالات گسستگی"],c:1,cat:"clin",era:"pre",ex:"PTSD در بخش اختلالات مرتبط با تروما است."},
+{q:"کدام اختلال شخصیت در خوشه B (نمایشی-هیجانی) قرار دارد؟",o:["اسکیزوئید","پارانوئید","مرزی","وسواسی-جبری"],c:2,cat:"clin",era:"pre",ex:"مرزی، نمایشی، خودشیفته و ضداجتماعی در خوشه B هستند."},
+{q:"کدام گزینه جزء اختلالات اضطرابی DSM-5 نیست؟",o:["فوبیای خاص","اختلال وسواسی-جبری","اختلال اضطراب اجتماعی","آگورافوبیا"],c:1,cat:"clin",era:"pre",ex:"وسواس در DSM-5 فصل جداگانه‌ای دارد."},
+{q:"در DSM-5، حداقل مدت علائم برای تشخیص اسکیزوفرنی چقدر است؟",o:["۱ هفته","۱ ماه","۶ ماه","۱ سال"],c:2,cat:"clin",era:"pre",ex:"حداقل ۶ ماه علائم (با حداقل ۱ ماه فاز فعال) لازم است."},
+{q:"ویژگی اصلی اختلال شخصیت مرزی (BPD) کدام است؟",o:["بزرگ‌منشی","بی‌ثباتی در روابط و هویت","کمرویی افراطی","وسواس"],c:1,cat:"clin",era:"post",ex:"BPD با بی‌ثباتی در عاطفه، روابط و تصویر از خود مشخص است."},
+{q:"در DSM-5، برای تشخیص افسردگی اساسی علائم باید حداقل چند هفته ادامه داشته باشند؟",o:["۱ هفته","۲ هفته","۴ هفته","۸ هفته"],c:1,cat:"clin",era:"post",ex:"حداقل ۲ هفته خلق افسرده یا فقدان علاقه لازم است."},
+{q:"کدام عبارت درباره اختلال «سیکلوتایمی» صحیح است؟",o:["شکل خفیف‌تر دوقطبی با نوسانات خلقی مزمن","همان دوقطبی نوع یک است","فقط دوره افسردگی دارد","فقط دوره شیدایی دارد"],c:0,cat:"clin",era:"post",ex:"سیکلوتایمی نوسانات خلقی مزمن (حداقل ۲ سال) با شدت کمتر از دوقطبی است."},
+{q:"در تشخیص اختلال وسواس-جبری (OCD)، وسواس‌ها چه ویژگی‌ای دارند؟",o:["افکار اگوسینتونیک","افکار اگودیستونیک","رفتارهای تکراری","هر دو الف و ب"],c:1,cat:"clin",era:"post",ex:"وسواس‌ها اگودیستونیک هستند؛ یعنی با ارزش‌های فرد تعارض دارند."},
+{q:"کدام یک از علائم زیر در تشخیص اختلال ADHD ضروری است؟",o:["توهم","کم‌توجهی و/یا بیش‌فعالی-تکانشگری","هذیان","اضطراب مزمن"],c:1,cat:"clin",era:"post",ex:"بی‌توجهی و/یا بیش‌فعالی-تکانشگری ملاک اصلی ADHD است."},
+{q:"در طیف اوتیسم، کدام ویژگی از دو حوزه اصلی است؟",o:["نقص در ارتباط اجتماعی و الگوهای رفتاری محدود","هذیان و توهم","بیش‌فعالی و تکانشگری","فوبیا و اضطراب"],c:0,cat:"clin",era:"post",ex:"DSM-5 دو حوزه اصلی: نقص اجتماعی-ارتباطی و الگوهای تکراری رفتار."},
+{q:"اختلال «افسردگی مداوم» (Dysthymia) در DSM-5 با کدام ملاک زمانی مشخص می‌شود؟",o:["۲ هفته","۶ ماه","۱ سال","۲ سال"],c:3,cat:"clin",era:"post",ex:"دیستایمیا حداقل ۲ سال خلق افسرده مزمن دارد."},
+{q:"کدام گزینه درباره اختلال هراس (panic disorder) صحیح است؟",o:["فقط با محرک‌های خاص ایجاد می‌شود","حملات غیرمنتظره تکراری دارد","فقط در موقعیت اجتماعی رخ می‌دهد","با توهم همراه است"],c:1,cat:"clin",era:"post",ex:"اختلال هراس با حملات پانیک غیرمنتظره و نگرانی از حمله بعدی مشخص است."},
+{q:"کدام انتقال‌دهنده عصبی نقش اصلی در تنظیم خلق دارد و کاهشش با افسردگی مرتبط است؟",o:["دوپامین","سروتونین","استیل کولین","گابا"],c:1,cat:"bio",era:"pre",ex:"سروتونین در خلق، خواب و اشتها نقش دارد."},
+{q:"کدام ساختار مغزی نقش اساسی در تثبیت حافظه و جهتیابی فضایی دارد؟",o:["تالاموس","آمیگدال","هیپوکامپ","مخچه"],c:2,cat:"bio",era:"pre",ex:"هیپوکامپ برای حافظه بلندمدت و فضایی حیاتی است."},
+{q:"دستگاه لیمبیک عمدتاً با چه چیزی مرتبط است؟",o:["هماهنگی حرکتی","پردازش بینایی","هیجان و حافظه","تنظیم دمای بدن"],c:2,cat:"bio",era:"pre",ex:"دستگاه لیمبیک نقش کلیدی در هیجان و حافظه دارد."},
+{q:"کدام انتقال‌دهنده عصبی بیشترین ارتباط را با احساس لذت و پاداش دارد؟",o:["سروتونین","نوراپی‌نفرین","دوپامین","استیل کولین"],c:2,cat:"bio",era:"pre",ex:"دوپامین در مسیر پاداش مغز نقش اصلی دارد."},
+{q:"کدام ناقل عصبی بیشترین نقش را در بیماری آلزایمر دارد؟",o:["دوپامین","سروتونین","استیل کولین","گابا"],c:2,cat:"bio",era:"pre",ex:"کاهش استیل کولین با آلزایمر مرتبط است."},
+{q:"کدام هورمون در چرخه خواب شبانه‌روزی نقش اساسی دارد؟",o:["کورتیزول","ملاتونین","انسولین","تیروکسین"],c:1,cat:"bio",era:"pre",ex:"ملاتونین از غده پینه‌آل ترشح می‌شود و خواب را تنظیم می‌کند."},
+{q:"در شبکه عصبی، «میلین» چه نقشی دارد؟",o:["انتقال الکتروشیمیایی را کند می‌کند","سرعت هدایت پیام عصبی را افزایش می‌دهد","اتصال سیناپسی ایجاد می‌کند","ناقل عصبی ترشح می‌کند"],c:1,cat:"bio",era:"post",ex:"غلاف میلین به هدایت سالتاتوری کمک می‌کند و سرعت انتقال را بالا می‌برد."},
+{q:"آمیگدال نقش اصلی در کدام فرآیند دارد؟",o:["هماهنگی حرکتی","پردازش هیجانی خصوصاً ترس","تنظیم خواب","تولید زبان"],c:1,cat:"bio",era:"post",ex:"آمیگدال در ارزیابی تهدیدات و پردازش ترس نقش محوری دارد."},
+{q:"کدام هورمون «هورمون استرس» نامیده می‌شود؟",o:["ملاتونین","کورتیزول","انسولین","دوپامین"],c:1,cat:"bio",era:"post",ex:"کورتیزول در پاسخ به استرس از قشر غده فوق کلیوی ترشح می‌شود."},
+{q:"گیرنده‌های GABA اثر اصلی کدام دسته از داروها را توضیح می‌دهد؟",o:["داروهای ضدافسردگی","بنزودیازپین‌ها","داروهای ضدذهان‌پریشی","مهارکننده‌های کولین"],c:1,cat:"bio",era:"post",ex:"بنزودیازپین‌ها با تقویت اثر GABA اضطراب را کاهش می‌دهند."},
+{q:"کدام موج مغزی EEG با خواب عمیق (NREM مرحله ۳) مرتبط است؟",o:["امواج آلفا","امواج بتا","امواج دلتا","امواج تتا"],c:2,cat:"bio",era:"post",ex:"امواج دلتا در خواب موج‌آهسته (مرحله ۳ NREM) غالب هستند."},
+{q:"در سیستم عصبی خودمختار، تقسیم «سمپاتیک» چه پاسخی ایجاد می‌کند؟",o:["استراحت و هضم","جنگ یا گریز","ترشح انسولین","کاهش ضربان قلب"],c:1,cat:"bio",era:"post",ex:"سیستم سمپاتیک پاسخ جنگ یا گریز را فعال می‌کند."},
+{q:"کدام ناحیه مغز بیشتر با تولید زبان (بیان) مرتبط است؟",o:["ناحیه ورنیکه","ناحیه بروکا","هیپوکامپ","تالاموس"],c:1,cat:"bio",era:"post",ex:"ناحیه بروکا در لوب پیشانی چپ با تولید گفتار مرتبط است."},
+{q:"«پلاستیسیته عصبی» به چه معناست؟",o:["توانایی مغز برای تغییر ساختار و عملکرد در پاسخ به تجربه","سختی ساختار مغز","ثبات اتصالات عصبی","مرگ نورون‌ها"],c:0,cat:"bio",era:"post",ex:"نوروپلاستیسیته توانایی مغز برای تغییر و انطباق با تجربه است."},
+{q:"کدام مفهوم با شرطی‌سازی کلاسیک پاولف مرتبط است؟",o:["تقویت مثبت","بازتاب شرطی","یادگیری مشاهده‌ای","خاموشی عامل"],c:1,cat:"learn",era:"pre",ex:"بازتاب شرطی پایه شرطی‌سازی کلاسیک است."},
+{q:"چه کسی آزمایش «عروسک بوبو» را انجام داد؟",o:["اسکینر","بندورا","پاولف","تورندایک"],c:1,cat:"learn",era:"pre",ex:"بندورا با عروسک بوبو یادگیری اجتماعی را نشان داد."},
+{q:"کدام نوع حافظه مربوط به دانستن «چگونه» انجام دادن کارها است؟",o:["حافظه آشکار","حافظه معنایی","حافظه رویه‌ای","حافظه اپیزودیک"],c:2,cat:"learn",era:"pre",ex:"حافظه رویه‌ای (ضمنی) به مهارت‌ها و عادات مربوط می‌شود."},
+{q:"در شرطی‌سازی عامل، برنامه «نسبت متغیر» کدام ویژگی را دارد؟",o:["پاسخ‌دهی آهسته و ثابت","نرخ پاسخ بالا و مقاوم در برابر خاموشی","تقویت پس از تعداد ثابت پاسخ","تقویت بر اساس زمان"],c:1,cat:"learn",era:"pre",ex:"برنامه نسبت متغیر نرخ پاسخ بالا ایجاد می‌کند."},
+{q:"قانون اثر (Law of Effect) توسط چه کسی تدوین شد؟",o:["اسکینر","پاولف","تورندایک","بندورا"],c:2,cat:"learn",era:"pre",ex:"تورندایک: رفتارهایی که پیامد خوشایند دارند تقویت می‌شوند."},
+{q:"در نظریه اسکینر، «تقویت منفی» یعنی:",o:["ارائه محرک ناخوشایند","حذف محرک خوشایند","حذف محرک ناخوشایند","تنبیه مثبت"],c:2,cat:"learn",era:"pre",ex:"تقویت منفی با حذف یک محرک آزاردهنده، رفتار را افزایش می‌دهد."},
+{q:"تعریف صحیح «حافظه فعال» (working memory) کدام است؟",o:["حافظه بلندمدت برای رویدادها","سیستمی با ظرفیت محدود برای نگهداری و دستکاری موقت اطلاعات","حافظه حسی","حافظه رویه‌ای"],c:1,cat:"learn",era:"pre",ex:"مدل بدلی: حلقه واجی، صفحه دیداری-فضایی و مجری مرکزی."},
+{q:"«منحنی فراموشی» اِبینگهاوس نشان می‌دهد که:",o:["فراموشی خطی است","بیشترین فراموشی در اوایل پس از یادگیری رخ می‌دهد","فراموشی با گذشت زمان تسریع می‌شود","همه اطلاعات فراموش نمی‌شوند"],c:1,cat:"learn",era:"post",ex:"ابینگهاوس نشان داد فراموشی در ابتدا سریع و سپس کند می‌شود."},
+{q:"در یادگیری، «بینش» (insight) را کدام روانشناس با آزمایش شامپانزه‌ها نشان داد؟",o:["اسکینر","پاولف","کهلر","تورندایک"],c:2,cat:"learn",era:"post",ex:"ولفگانگ کهلر یادگیری از طریق بینش را نشان داد."},
+{q:"«یادگیری پنهان» توسط کدام روانشناس نشان داده شد؟",o:["بندورا","تولمن","اسکینر","پاولف"],c:1,cat:"learn",era:"post",ex:"ادوارد تولمن با آزمایش موش‌ها در هزارتو یادگیری پنهان را نشان داد."},
+{q:"«خودکارآمدی» در نظریه بندورا به چه معناست؟",o:["توانایی واقعی فرد","باور فرد به توانایی خودش برای انجام رفتار","انگیزه درونی","پاداش بیرونی"],c:1,cat:"learn",era:"post",ex:"خودکارآمدی (self-efficacy) باور فرد به توانایی خود است."},
+{q:"«اثر فاصله» در یادگیری به چه معناست؟",o:["تمرین فشرده مؤثرتر است","تمرین توزیع‌شده در طول زمان بهتر از تمرین فشرده است","تکرار هیچ تأثیری ندارد","فاصله بین سوالات اهمیتی ندارد"],c:1,cat:"learn",era:"post",ex:"اثر فاصله: مطالعه پراکنده در طول زمان بهتر از حفظ یک‌شبه است."},
+{q:"در نظریه سلسله مراتب نیازهای مزلو، کدام نیاز در سطح چهارم است؟",o:["فیزیولوژیک","ایمنی","عشق و تعلق","احترام"],c:3,cat:"social",era:"pre",ex:"نیاز به احترام (عزت نفس) در سطح چهارم است."},
+{q:"کدام مکانیسم دفاعی، نسبت دادن احساسات غیرقابل قبول خود به دیگران است؟",o:["سرکوب","فرافکنی","واکنش وارونه","دلیل‌تراشی"],c:1,cat:"social",era:"pre",ex:"فرافکنی یعنی نسبت دادن ناخودآگاه ویژگی‌های خود به دیگران."},
+{q:"«ناهماهنگی شناختی» فستینگر به چه معناست؟",o:["تعارض بین دو باور ناسازگار و تلاش برای کاهش آن","یادگیری از طریق مشاهده","عدم توجه به اطلاعات جدید","فراموشی اطلاعات قدیمی"],c:0,cat:"social",era:"pre",ex:"ناهماهنگی شناختی: تنش از تضاد دو شناخت که انگیزه تغییر ایجاد می‌کند."},
+{q:"طبق نظریه فروید، کدام بخش شخصیت بر اساس اصل لذت عمل می‌کند؟",o:["نهاد","من","فرامن","همه موارد"],c:0,cat:"social",era:"pre",ex:"نهاد (id) بر پایه اصل لذت فوری عمل می‌کند."},
+{q:"در نظریه شخصیت آیزنک، ابعاد اصلی شخصیت کدام‌اند؟",o:["برون‌گرایی، روان‌رنجورخویی، روان‌گسسته‌خویی","گشودگی، وظیفه‌شناسی","برون‌گرایی، توافق","درون‌گرایی، ثبات هیجانی"],c:0,cat:"social",era:"pre",ex:"آیزنک سه بعد: برون‌گرایی، روان‌رنجورخویی، روان‌گسسته‌خویی معرفی کرد."},
+{q:"در نظریه صفات شخصیت «پنج بزرگ»، کدام صفت با نظم و انضباط مرتبط است؟",o:["برون‌گرایی","وظیفه‌شناسی","گشودگی","توافق"],c:1,cat:"social",era:"pre",ex:"وظیفه‌شناسی شامل خویشتن‌داری و مسئولیت‌پذیری است."},
+{q:"کدام دانشمند با آزمایش «اطاعت از قدرت» (شوک الکتریکی) شهرت دارد؟",o:["زیمباردو","میلگرام","اش","شریف"],c:1,cat:"social",era:"pre",ex:"استنلی میلگرام آزمایش اطاعت را انجام داد."},
+{q:"در روانشناسی اجتماعی، «تأثیر تماشاگر» (bystander effect) یعنی:",o:["حضور تماشاگران احتمال کمک را افزایش می‌دهد","هرچه تعداد ناظران بیشتر باشد احتمال کمک کاهش می‌یابد","مردم در حضور دیگران بهتر عمل می‌کنند","ترس از قضاوت دیگران"],c:1,cat:"social",era:"post",ex:"اثر تماشاگر: پراکندگی مسئولیت باعث کاهش کمک می‌شود."},
+{q:"«اسناد بنیادی» (Fundamental attribution error) به چه خطایی اشاره دارد؟",o:["بیش از حد به عوامل موقعیتی اهمیت دادن","بیش از حد به عوامل شخصیتی و کم‌اهمیت دادن به موقعیت","انکار مسئولیت شخصی","تعمیم افراطی"],c:1,cat:"social",era:"post",ex:"خطای اسناد بنیادی: دست‌کم گرفتن عوامل موقعیتی در تفسیر رفتار دیگران."},
+{q:"مفهوم «خودپنداره» (self-concept) چیست؟",o:["احساس ارزشمندی","تصویر ذهنی فرد از خودش","هوش هیجانی","عزت نفس"],c:1,cat:"social",era:"post",ex:"خودپنداره مجموعه باورهای فرد درباره ماهیت، توانایی‌ها و ویژگی‌های خودش است."},
+{q:"«پدیده تفکر گروهی» (groupthink) به چه معناست؟",o:["گروه همیشه تصمیم بهتری می‌گیرد","فشار برای همنوایی در گروه منجر به تصمیمات ضعیف می‌شود","گروه‌ها خلاق‌تر از افراد هستند","تأثیر اقلیت بر اکثریت"],c:1,cat:"social",era:"post",ex:"جانیس: انسجام بیش از حد گروه باعث قضاوت معیوب می‌شود."},
+{q:"خطای نوع اول در آزمون فرضیه به چه معناست؟",o:["رد فرض صفر در حالی که درست است","پذیرش فرض صفر وقتی نادرست است","عدم تشخیص تفاوت واقعی","تخمین نادرست اندازه اثر"],c:0,cat:"stats",era:"pre",ex:"خطای آلفا یعنی رد اشتباه H0."},
+{q:"کدام آزمون آماری برای مقایسه میانگین بیش از دو گروه به کار می‌رود؟",o:["آزمون t","ضریب همبستگی پیرسون","تحلیل واریانس (ANOVA)","مجذور خی"],c:2,cat:"stats",era:"pre",ex:"ANOVA برای مقایسه میانگین سه گروه یا بیشتر استفاده می‌شود."},
+{q:"ضریب همبستگی پیرسون ۰.۸۵+ نشان‌دهنده چیست؟",o:["رابطه منفی قوی","رابطه مثبت متوسط","رابطه مثبت بسیار قوی","عدم همبستگی"],c:2,cat:"stats",era:"pre",ex:"مقادیر بالای ۰.۸ همبستگی مثبت قوی محسوب می‌شوند."},
+{q:"در روش تحقیق، «متغیر مستقل» کدام است؟",o:["متغیری که اندازه‌گیری می‌شود","متغیری که دستکاری می‌شود","متغیر مزاحم","متغیر کنترل"],c:1,cat:"stats",era:"pre",ex:"متغیر مستقل توسط پژوهشگر دستکاری می‌شود."},
+{q:"«آلفای کرونباخ» چه چیزی را اندازه می‌گیرد؟",o:["پایایی بازآزمایی","روایی محتوایی","همسانی درونی آزمون","روایی ملاکی"],c:2,cat:"stats",era:"post",ex:"آلفای کرونباخ شاخص همسانی درونی سوالات یک آزمون است."},
+{q:"«خطای نوع دوم» (Beta) به چه معناست؟",o:["رد فرض صفر درست","پذیرش فرض صفر وقتی نادرست است","خطای اندازه‌گیری","خطای نمونه‌گیری"],c:1,cat:"stats",era:"post",ex:"خطای بتا: رد نکردن H0 وقتی که واقعاً باید رد می‌شد."},
+{q:"«توان آماری» (Statistical power) به چه معناست؟",o:["احتمال رد درست فرض صفر نادرست","احتمال خطای نوع اول","اندازه نمونه","ضریب تعیین"],c:0,cat:"stats",era:"post",ex:"توان آماری = احتمال تشخیص اثر واقعی = ۱-بتا."},
+{q:"کدام دارو از مهارکننده‌های انتخابی بازجذب سروتونین (SSRI) است؟",o:["فلوکستین","هالوپریدول","لیتیوم","دیازپام"],c:0,cat:"therapy",era:"pre",ex:"فلوکستین (پروزاک) یک SSRI معروف است."},
+{q:"کدام رویکرد درمانی بر پذیرش بدون قید و شرط مراجع تأکید دارد؟",o:["رفتاردرمانی","شناخت‌درمانی","روان‌کاوی","درمان مراجع‌محور راجرز"],c:3,cat:"therapy",era:"pre",ex:"راجرز توجه مثبت نامشروط را ضروری می‌دانست."},
+{q:"کدام خطای شناختی بک به «نتیجه‌گیری فاجعه‌آمیز» اشاره دارد؟",o:["تعمیم افراطی","فاجعه‌سازی","شخصی‌سازی","تفکر دوقطبی"],c:1,cat:"therapy",era:"pre",ex:"فاجعه‌سازی یعنی بزرگ‌نمایی خطر یا پیامد منفی."},
+{q:"«مواجهه و بازداری از پاسخ» (ERP) روش اصلی درمان کدام اختلال است؟",o:["افسردگی","وسواس","اسکیزوفرنی","دوقطبی"],c:1,cat:"therapy",era:"pre",ex:"ERP درمان رفتاری مؤثر برای OCD است."},
+{q:"درمان «فعال‌سازی رفتاری» برای کدام اختلال طراحی شده است؟",o:["اسکیزوفرنی","اضطراب فراگیر","افسردگی","وسواس"],c:2,cat:"therapy",era:"post",ex:"فعال‌سازی رفتاری با افزایش فعالیت‌های لذت‌بخش افسردگی را کاهش می‌دهد."},
+{q:"درمان «پذیرش و تعهد» (ACT) بیشتر بر کدام رویکرد تأکید دارد؟",o:["تغییر افکار منفی","پذیرش تجربه و عمل بر اساس ارزش‌ها","تحلیل ناهشیار","شرطی‌سازی مجدد"],c:1,cat:"therapy",era:"post",ex:"ACT بر پذیرش بدون قضاوت و عمل متعهدانه بر اساس ارزش‌ها تأکید دارد."},
+{q:"در CBT، «مثلث شناختی» بک شامل چه چیزهایی است؟",o:["ذهن، بدن، روح","خود منفی، دنیا منفی، آینده منفی","افکار، احساسات، رفتار","خاطرات، تروما، انکار"],c:1,cat:"therapy",era:"post",ex:"مثلث شناختی بک: نگرش منفی به خود، دنیا و آینده در افسردگی."},
+{q:"«درمان دیالکتیکی رفتاری» (DBT) توسط چه کسی طراحی شد؟",o:["بک برای افسردگی","لینهان برای اختلال شخصیت مرزی","فروید برای هیستری","راجرز برای اضطراب"],c:1,cat:"therapy",era:"post",ex:"مارشا لینهان DBT را برای BPD توسعه داد."},
+{q:"«حساسیت‌زدایی منظم» برای درمان کدام اختلال به کار می‌رود؟",o:["اسکیزوفرنی","فوبیا","دوقطبی","اختلال شخصیت"],c:1,cat:"therapy",era:"post",ex:"حساسیت‌زدایی منظم وولپی برای درمان فوبیا و اضطراب مناسب است."},
+{q:"لیتیوم کربنات در درمان کدام اختلال استفاده می‌شود؟",o:["اسکیزوفرنی","اختلال دوقطبی","فوبیا","PTSD"],c:1,cat:"therapy",era:"post",ex:"لیتیوم تثبیت‌کننده خلق در اختلال دوقطبی است."},
+{q:"«EMDR» برای کدام اختلال بیشترین شواهد اثربخشی دارد؟",o:["اسکیزوفرنی","PTSD","OCD","ADHD"],c:1,cat:"therapy",era:"post",ex:"EMDR (حساسیت‌زدایی از طریق حرکت چشم) برای PTSD مؤثر است."}
+];
+var SK="pq_v5";
+var _m={};
+function ld(){try{var r=localStorage.getItem(SK);return r?JSON.parse(r):{}}catch(e){return _m||{}}}
+function sv(s){try{localStorage.setItem(SK,JSON.stringify(s))}catch(e){_m=s}}
+var QL=[],ST={},APP=null;
+function ga(){if(!APP)APP=document.getElementById('app');return APP}
+function anim(){var a=ga();if(!a)return;a.classList.remove('anim');void a.offsetWidth;a.classList.add('anim')}
+function sm(m){window.__currentMode=m;try{history.pushState({page:m},'')}catch(e){}}
+function renderHome(){
+  var a=ga();if(!a)return;
+  sm('home');anim();
+  var s=ld(),res=s.results||{};
+  var saved='';
+  if(s.mode==='quiz'&&typeof s.qi==='number'&&s.qi>0){
+    var cl=s.cid==='all'?'همه سوالات':s.cid==='pre'?'قبل از ۱۴۰۰':s.cid==='post'?'۱۴۰۰ به بعد':(CATS.find(function(c){return c.id===s.cid;})||{name:'...'}).name;
+    saved='<div class="sb">📌 ادامه از: <b>'+cl+'</b> — سوال '+(s.qi+1)+'</div><button class="btn" onclick="cont()">← ادامه جلسه قبل</button>';
+  }
+  var cards=CATS.map(function(cat){
+    var cq=QS.filter(function(q){return q.cat===cat.id;});
+    var done=cq.filter(function(_,i){return res[cat.id+'_'+i]!==undefined;}).length;
+    var cor=cq.filter(function(_,i){return res[cat.id+'_'+i]===true;}).length;
+    var p=done>0?'✅ '+cor+'/'+done:'';
+    return '<div class="cc" onclick="go(\''+cat.id+'\')"><div class="ci">'+cat.icon+'</div><div class="cn">'+cat.name+'</div><div class="ck">'+cq.length+' سوال</div><div class="cp">'+p+'</div></div>';
+  }).join('');
+  var td=Object.keys(res).length,tc=Object.values(res).filter(function(v){return v===true;}).length;
+  var tp=td>0?Math.round(tc/td*100):0;
+  a.innerHTML='<div class="hdr">🧠 کنکور ارشد روانشناسی</div>'
+    +saved
+    +'<div class="ms"><div class="mv"><div class="vl">'+QS.length+'</div><div class="lb">کل سوال</div></div>'
+    +'<div class="mv"><div class="vl">'+td+'</div><div class="lb">پاسخ داده</div></div>'
+    +'<div class="mv"><div class="vl">'+tc+'</div><div class="lb">صحیح</div></div>'
+    +'<div class="mv"><div class="vl">'+tp+'٪</div><div class="lb">درصد</div></div></div>'
+    +'<div class="cc al" onclick="go(\'all\')"><div class="ci">📋</div><div class="cn">همه سوالات ('+QS.length+' سوال)</div></div>'
+    +'<div class="cg">'+cards+'</div>'
+    +'<div style="display:flex;gap:10px">'
+    +'<button class="btn wn" onclick="go(\'pre\')">📜 کلاسیک ('+QS.filter(function(q){return q.era==='pre';}).length+')</button>'
+    +'<button class="btn in" onclick="go(\'post\')">🆕 ۱۴۰۰+ ('+QS.filter(function(q){return q.era==='post';}).length+')</button>'
+    +'</div><hr class="div">'
+    +'<div style="display:flex;gap:10px">'
+    +'<button class="btn sc" onclick="about()">ℹ️ درباره اپ</button>'
+    +'<button class="btn dk" onclick="rst()">🗑 پاک کردن پیشرفت</button>'
+    +'</div>';
+}
+function cont(){var s=ld();if(!s.cid)return;bq(s.cid);ST=s;rq()}
+function bq(id){
+  if(id==='all')QL=QS.slice();
+  else if(id==='pre')QL=QS.filter(function(q){return q.era==='pre';});
+  else if(id==='post')QL=QS.filter(function(q){return q.era==='post';});
+  else QL=QS.filter(function(q){return q.cat===id;});
+}
+function go(id){bq(id);var s=ld();ST={mode:'quiz',cid:id,qi:0,score:0,ans:false,results:s.results||{}};sv(ST);rq()}
+function rst(){if(confirm('آیا مطمئن هستید؟\nتمام پیشرفت پاک می‌شود.')){try{localStorage.removeItem(SK)}catch(e){}_m={};ST={};renderHome()}}
+function rq(){
+  var a=ga();if(!a)return;
+  sm('quiz');anim();ST=ld();
+  var qi=ST.qi||0;
+  if(qi>=QL.length){rr();return;}
+  var q=QL[qi],total=QL.length,pct=Math.round(qi/total*100);
+  var ci=CATS.find(function(c){return c.id===q.cat;})||{name:'',icon:''};
+  var eb=q.era==='pre'?'<span class="eb ep">📜 کلاسیک</span>':'<span class="eb en">🆕 ۱۴۰۰+</span>';
+  var opts=q.o.map(function(o,i){return '<button class="ob" id="o'+i+'" onclick="ans('+i+')">'+LT[i]+'. '+o+'</button>';}).join('');
+  a.innerHTML='<div class="hdr">🧠 روانشناسی کنکور ارشد</div>'
+    +'<div class="pt">سوال '+(qi+1)+' از '+total+' &nbsp;|&nbsp; امتیاز: '+(ST.score||0)+'</div>'
+    +'<div class="pbw"><div class="pbf" style="width:'+pct+'%"></div></div>'
+    +'<div class="qb"><div style="margin-bottom:6px">'+eb+'<span class="cb">'+ci.icon+' '+ci.name+'</span></div>'+q.q+'</div>'
+    +'<div class="opts">'+opts+'</div>'
+    +'<div id="fb" class="fb hid"></div>'
+    +'<div class="ar hid" id="ar">'
+    +'<button class="btn" onclick="nxt()">سوال بعدی ←</button>'
+    +'<button class="btn sc" onclick="renderHome()">🏠 خانه</button>'
+    +'</div>';
+}
+function ans(idx){
+  var s=ld();if(s.ans)return;
+  var q=QL[s.qi||0],ok=(idx===q.c);
+  s.ans=true;if(ok)s.score=(s.score||0)+1;
+  var rk=s.cid+'_'+s.qi;
+  if(!s.results)s.results={};
+  s.results[rk]=ok;sv(s);ST=s;
+  var bs=document.querySelectorAll('.ob');
+  for(var i=0;i<bs.length;i++){
+    bs[i].classList.add('dis');
+    if(i===q.c)bs[i].classList.add('cor');
+    else if(i===idx&&!ok)bs[i].classList.add('inc');
+  }
+  var fb=document.getElementById('fb');
+  if(fb){fb.classList.remove('hid');fb.innerHTML=ok?'✅ <b>درست!</b> 💡 '+q.ex:'❌ <b>اشتباه!</b> پاسخ صحیح: <b>'+LT[q.c]+'. '+q.o[q.c]+'</b><br>💡 '+q.ex;}
+  var ar=document.getElementById('ar');if(ar)ar.classList.remove('hid');
+}
+function nxt(){var s=ld();s.qi=(s.qi||0)+1;s.ans=false;sv(s);ST=s;if(s.qi>=QL.length)rr();else rq()}
+function rr(){
+  var a=ga();if(!a)return;
+  sm('result');anim();
+  var s=ld(),total=QL.length,score=s.score||0,pct=Math.round(score/total*100);
+  var stars=pct>=80?'⭐⭐⭐':pct>=60?'⭐⭐':'⭐';
+  var msg=pct>=80?'🎉 عالی! آفرین!':pct>=60?'👍 خوب بود، ادامه بده!':'📖 نیاز به مطالعه بیشتر داری.';
+  a.innerHTML='<div class="hdr">🧠 نتیجه آزمون</div>'
+    +'<div class="rs"><div style="font-size:2rem">'+stars+'</div>'
+    +'<div style="margin-top:8px;font-size:1.1rem">'+msg+'</div>'
+    +'<div class="sc2">'+score+' / '+total+'</div>'
+    +'<div class="sd">درصد صحیح: '+pct+'٪</div></div>'
+    +'<div class="ar"><button class="btn" onclick="go(\''+s.cid+'\')">🔄 تکرار</button>'
+    +'<button class="btn dk" onclick="renderHome()">🏠 خانه</button></div>';
+  s.qi=0;s.score=0;s.ans=false;s.mode='result';sv(s);
+}
+function about(){
+  var a=ga();if(!a)return;
+  sm('about');anim();
+  a.innerHTML='<div class="hdr">ℹ️ درباره اپلیکیشن</div>'
+    +'<div class="ab"><p><b>🧠 کنکور ارشد روانشناسی</b></p><br>'
+    +'<p>'+QS.length+' سوال پرتکرار در ۸ دسته موضوعی</p><br>'
+    +'<p>✅ کار بدون اینترنت &nbsp;|&nbsp; ✅ ذخیره پیشرفت</p></div>'
+    +'<div class="db">⚠️ <b>هشدار:</b> سوالات جنبه آموزشی دارند و جایگزین منابع درسی اصلی نمی‌شود.</div>'
+    +'<button class="btn dk" onclick="renderHome()">← بازگشت به خانه</button>';
+}
+window.addEventListener('popstate',function(){if((window.__currentMode||'home')!=='home'){renderHome()}else{history.pushState({page:'home'},'')}});
+history.pushState({page:'home'},'');
+window.addEventListener('load',function(){
+  setTimeout(function(){var s=document.getElementById('splash');if(s){s.classList.add('hide');setTimeout(function(){s.remove()},500)}},1200);
+});
+renderHome();
+</script>
 </body>
 </html>
