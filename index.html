@@ -78,6 +78,13 @@ body{background:linear-gradient(145deg,#0b2b3b 0%,#1a4b5e 100%);min-height:100vh
 </div>
 <div class="box" id="app"></div>
 <script>
+// پاک کردن Service Worker قدیمی
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.getRegistrations().then(function(regs){
+    for(var i=0;i<regs.length;i++){regs[i].unregister();}
+  });
+}
+
 var CATS=[
   {id:"history",name:"تاریخچه و مکاتب",icon:"📚"},
   {id:"dev",name:"رشد و تکامل",icon:"🌱"},
@@ -100,7 +107,6 @@ var QS=[
 {q:"کدام دانشمند آزمایشگاه روانشناسی تجربی اول را در لایپزیگ تأسیس کرد؟",o:["فروید","وونت","جیمز","اسکینر"],c:1,cat:"history",era:"post",ex:"ویلهلم وونت در ۱۸۷۹ اولین آزمایشگاه روانشناسی را تأسیس کرد."},
 {q:"روانشناسی شناختی بیشتر در واکنش به کدام مکتب شکل گرفت؟",o:["روان‌کاوی","گشتالت","رفتارگرایی","انسان‌گرایی"],c:2,cat:"history",era:"post",ex:"انقلاب شناختی دهه ۱۹۵۰-۶۰ در واکنش به محدودیت‌های رفتارگرایی بود."},
 {q:"کدام روانشناس مفهوم «ناهشیار جمعی» را مطرح کرد؟",o:["فروید","یونگ","آدلر","هورنای"],c:1,cat:"history",era:"post",ex:"کارل گوستاو یونگ ناهشیار جمعی و کهن‌الگوها را معرفی کرد."},
-{q:"کدام گزاره درباره روانشناسی مثبت‌گرا صحیح است؟",o:["بر آسیب‌شناسی تمرکز دارد","بر توانمندی‌ها، شادکامی و شکوفایی تمرکز دارد","از رفتارگرایی جدا نیست","فقط برای بالغان کاربرد دارد"],c:1,cat:"history",era:"post",ex:"روانشناسی مثبت‌گرا (سلیگمن) بر نقاط قوت و شکوفایی انسان تأکید دارد."},
 {q:"«روانشناسی فردی» آدلر بر کدام مفهوم تأکید اصلی دارد؟",o:["غریزه جنسی","احساس حقارت و تلاش برای برتری","ناهشیار جمعی","شرطی‌سازی"],c:1,cat:"history",era:"post",ex:"آدلر: احساس حقارت انگیزه اصلی پیشرفت و تلاش برای برتری است."},
 {q:"در نظریه پیاژه، تفکر فرضیه‌ای-قیاسی مربوط به کدام مرحله است؟",o:["حسی-حرکتی","پیش‌عملیاتی","عملیات عینی","عملیات صوری"],c:3,cat:"dev",era:"pre",ex:"مرحله عملیات صوری (۱۱+ سال) تفکر انتزاعی را ممکن می‌سازد."},
 {q:"در نظریه اریکسون، بحران «اعتماد در برابر بی‌اعتمادی» در کدام دوره سنی است؟",o:["نوزادی ۰-۱ سال","نوپایی ۱-۳ سال","پیش‌دبستانی ۳-۶ سال","نوجوانی"],c:0,cat:"dev",era:"pre",ex:"مرحله اول اریکسون در سال اول زندگی است."},
@@ -186,7 +192,7 @@ var QS=[
 {q:"لیتیوم کربنات در درمان کدام اختلال استفاده می‌شود؟",o:["اسکیزوفرنی","اختلال دوقطبی","فوبیا","PTSD"],c:1,cat:"therapy",era:"post",ex:"لیتیوم تثبیت‌کننده خلق در اختلال دوقطبی است."},
 {q:"«EMDR» برای کدام اختلال بیشترین شواهد اثربخشی دارد؟",o:["اسکیزوفرنی","PTSD","OCD","ADHD"],c:1,cat:"therapy",era:"post",ex:"EMDR (حساسیت‌زدایی از طریق حرکت چشم) برای PTSD مؤثر است."}
 ];
-var SK="pq_v5";
+var SK="pq_v6";
 var _m={};
 function ld(){try{var r=localStorage.getItem(SK);return r?JSON.parse(r):{}}catch(e){return _m||{}}}
 function sv(s){try{localStorage.setItem(SK,JSON.stringify(s))}catch(e){_m=s}}
@@ -195,7 +201,7 @@ function ga(){if(!APP)APP=document.getElementById('app');return APP}
 function anim(){var a=ga();if(!a)return;a.classList.remove('anim');void a.offsetWidth;a.classList.add('anim')}
 function sm(m){window.__currentMode=m;try{history.pushState({page:m},'')}catch(e){}}
 function renderHome(){
-  var a=ga();if(!a)return;
+  var a=ga();if(!a){setTimeout(renderHome,100);return;}
   sm('home');anim();
   var s=ld(),res=s.results||{};
   var saved='';
@@ -303,10 +309,16 @@ function about(){
 }
 window.addEventListener('popstate',function(){if((window.__currentMode||'home')!=='home'){renderHome()}else{history.pushState({page:'home'},'')}});
 history.pushState({page:'home'},'');
+// splash پاک کردن
 window.addEventListener('load',function(){
-  setTimeout(function(){var s=document.getElementById('splash');if(s){s.classList.add('hide');setTimeout(function(){s.remove()},500)}},1200);
+  setTimeout(function(){
+    var s=document.getElementById('splash');
+    if(s){s.classList.add('hide');setTimeout(function(){if(s.parentNode)s.parentNode.removeChild(s);},500);}
+  },1500);
 });
-renderHome();
+// شروع بعد از اطمینان از لود DOM
+document.addEventListener('DOMContentLoaded',function(){renderHome();});
+if(document.readyState!=='loading'){renderHome();}
 </script>
 </body>
 </html>
